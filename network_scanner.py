@@ -8,14 +8,14 @@ def scan(ip):
     
     client_lists = []
     for element in reply_list:
-        client_dict = {"ip": element[1].psrc, "mac": element[1].hwsrc}
+        client_dict = {"ip": element[1].psrc, "mac": element[1].hwsrc, "source": element[1].psrc, "ProtocolType": element[1].hwtype, "HardwareType": element[1].ptype}
         client_lists.append(client_dict)
     return client_lists
 
 def print_result(result_list):
-    print("IP\t\t\tMAC Address\n-----------------------------------------")
+    print("IP\t\t\tMAC Address\t\t\tSource\n--------------------------------------------------------------------")
     for client in result_list:
-        print(client["ip"] + "\t\t" + client["mac"])
+        print(client["ip"] + "\t\t" + client["mac"] + "\t\t" + client["source"])
 
 scan_result = scan("192.168.1.1/24")
 print_result(scan_result)
